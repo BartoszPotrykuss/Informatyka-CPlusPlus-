@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1696859084 source:e:\informatyka\szyfrowanie2\main.cpp
+	<iostream>
+	<fstream>
+	<algorithm>
+

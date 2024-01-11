@@ -7,43 +7,36 @@
 
 using namespace std;
 
-const int N = 20; // Liczebnoœæ zbioru.
-
-// Program g³ówny
-//---------------
+    int tab[10];
 
 int main()
 {
-  int d[N],i,j,pmin;
+    for(int i = 0; i < 10; i++) {
+        tab[i] = rand() % 100 + 1;
+    }
 
-  cout << " Sortowanie przez wybor\n"
-          "------------------------\n"
-          " (C)2005 Jerzy Walaszek\n\n"
-          "Przed sortowaniem:\n\n";
 
-// Najpierw wype³niamy tablicê d[] liczbami pseudolosowymi
-// a nastêpnie wyœwietlamy jej zawartoœæ
+    cout << "Przed sortowaniem: " << endl;
+    for (int i = 0 ; i < 10; i++) {
+        cout << tab[i] << ", ";
+    }
 
-  srand((unsigned)time(NULL));
+            int minIndex;
+    for(int i = 0; i < 10-1; i++) {
+        minIndex = i;
+        for(int j = i+1; j < 10; j++) {
+            if (tab[j] < tab[minIndex]) {
+                minIndex = j;
+            }
+        }
+        int zmienna = tab[i];
+        tab[i] = tab[minIndex];
+        tab[minIndex] = zmienna;
+    }
 
-  for(i = 0; i < N; i++) d[i] = rand() % 100;
-  for(i = 0; i < N; i++) cout << setw(4) << d[i];
-  cout << endl;
-
-// Sortujemy
-
-  for(j = 0; j < N - 1; j++)
-  {
-    pmin = j;
-    for(i = j + 1; i < N; i++)
-      if(d[i] < d[pmin]) pmin = i;
-    swap(d[pmin], d[j]);
-  }
-
-// Wyœwietlamy wynik sortowania
-
-  cout << "Po sortowaniu:\n\n";
-  for(i = 0; i < N; i++) cout << setw(4) << d[i];
-  cout << endl;
+    cout << endl << "Po  sortowaniu:" << endl;
+        for (int i = 0 ; i < 10; i++) {
+        cout << tab[i] << ", ";
+        }
   return 0;
 }

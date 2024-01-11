@@ -1,52 +1,37 @@
-#include <cmath>
 #include <iostream>
-#include <iomanip>
-#include <cstdlib>
-#include <time.h>
 
 using namespace std;
 
-const int N = 20; // Liczebnoœæ zbioru.
-
-// Program g³ówny
-//---------------
+    int tab[10];
 
 int main()
 {
-  int d[N],i,j,x;
 
-  cout << " Sortowanie przez wstawianie\n"
-          "-----------------------------\n"
-          "   (C)2005  Jerzy Walaszek\n\n"
-          "Przed sortowaniem:\n\n";
-
-// Najpierw wype³niamy tablicê d[] liczbami pseudolosowymi
-// a nastêpnie wyœwietlamy jej zawartoœæ
-
-  srand((unsigned)time(NULL));
-
-  for(i = 0; i < N; i++) d[i] = rand() % 100;
-  for(i = 0; i < N; i++) cout << setw(4) << d[i];
-  cout << endl;
-
-// Sortujemy
-
-  for(j = N - 2; j >= 0; j--)
-  {
-    x = d[j];
-    i = j + 1;
-    while((i < N) && (x > d[i]))
-    {
-      d[i - 1] = d[i];
-      i++;
+    for(int i = 0; i < 10; i++) {
+        tab[i] = rand() % 100 + 1;
     }
-    d[i - 1] = x;
-  }
 
-// Wyœwietlamy wynik sortowania
 
-  cout << "Po sortowaniu:\n\n";
-  for(i = 0; i < N; i++) cout << setw(4) << d[i];
-  cout << endl;
+    cout << "Przed sortowaniem: " << endl;
+    for (int i = 0 ; i < 10; i++) {
+        cout << tab[i] << ", ";
+    }
+
+    int key, j;
+    for (int i = 1; i < 10; i++) {
+        key = tab[i];
+        j = i - 1;
+
+        while(j >= 0 && tab[j] > key) {
+            tab[j + 1] = tab[j];
+            j--;
+        }
+        tab[j + 1] = key;
+    }
+
+    cout << endl << "Po  sortowaniu:" << endl;
+        for (int i = 0 ; i < 10; i++) {
+        cout << tab[i] << ", ";
+        }
   return 0;
 }
